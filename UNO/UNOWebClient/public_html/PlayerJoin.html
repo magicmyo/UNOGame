@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>UNO Add Player</title>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/UNOGameList.js"></script>
+	</head>
+	<body>
+		<h1>Available Games</h1>
+		
+		<form action="http://localhost:8080/UNOWebServer/api/game/addplayer" method="post">
+			<select name="gid" id="gid">
+
+			</select> 
+			<br>
+			
+			Player Name : 
+			<input type="text" name="pname" /><br>
+			<button type="submit" >Add Player</button>
+		</form>
+	</body>
+</html>

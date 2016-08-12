@@ -6,45 +6,60 @@
 package iss.nus.edu.myo.uno;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 /**
  *
  * @author Myo Thu Htet
  */
 public class Deck {
-    
-    private final int  NUMCARD = 108;
-    
-    private ArrayList<Card> cards = new ArrayList<Card>();// = new ArrayList<Card>();
 
+    private ArrayList<Card> cards = new ArrayList<Card>();// = new ArrayList<Card>();
+    //private Card card;
+    //private int numCard;
+    
     public Deck(){
-        
+        DeckCreate();
     }
-    /**
-     * @param deck the deck to set
-     */
-    public void setCardToDeck(Card card) {
-        this.getDeck().add(card);
+ 
+    public void setCardToDeck(Card c) {
+        this.cards.add(c);
     }
 
     public Card getCardFromDeck() {
-        return this.getDeck().remove(0);
+        return this.cards.remove(0);
+    }
+
+
+    /**
+     * @return the deck
+     */
+    public ArrayList<Card> getDeck() {
+        return cards;
+    }
+
+    /**
+     * @param deck the deck to set
+     */
+    public void setDeck(ArrayList<Card> deck) {
+        this.cards = deck;
     }
     
-    @Override
-    public String toString() {
-        return "Cards on deck: " + getDeck().size()+"\n";//+cards;
+    /**
+     * @return the numCard
+     */
+    public int getNumCard() {
+        return cards.size();
     }
+
     
-    
-    public Deck DeckCreate(){
+    public void DeckCreate(){
+        int cid=1;
         String color[] = {"Red","Yellow", "Green", "Blue", "RYGB"};
         String type[] = {"Normal","Skip","Reverse", "Draw2", "Wild", "WildDrawFour"};
         
-        Card cards; 
-        Deck decks = new Deck();
-        
+        Card card; 
+               
         for(int c = 0; c < color.length; c++){
             
             int typeIndex = 0;
@@ -59,10 +74,10 @@ public class Deck {
                 }
                                 
                 if(c !=4){
-                   cards = new Card(color[c], type[typeIndex], value, color[c]+type[0]+value);
-                   decks.setCardToDeck(cards);
-                   
-                   if(n != 0) decks.setCardToDeck(cards); 
+                   card = new Card(cid+"",color[c], type[typeIndex], value, color[c]+type[typeIndex]+value);
+                   this.setCardToDeck(card);
+                   cid++;
+                   if(n != 0) this.setCardToDeck(card); 
                 }
                    
             }
@@ -72,28 +87,24 @@ public class Deck {
                 while(counter <= 4){
                     
                     for(int t = 4; t <type.length; t++){
-                        cards = new Card(color[c], type[t], 50, color[c]+type[t]+50);
-                        decks.setCardToDeck(cards);                
+                        card = new Card(cid+"",color[c], type[t], 50, color[c]+type[t]+50);
+                        this.setCardToDeck(card);  
+                        cid++;
                     }
                     
                     counter++;
                 }
             }
         }
-        return decks;
     }
 
-    /**
-     * @return the deck
-     */
-    public ArrayList<Card> getDeck() {
-        return cards;
+    public void ShuffleDeck(){
+        Collections.shuffle(getDeck());
     }
-
-    /**
-     * @param deck the deck to set
-     */
-    public void setDeck(ArrayList<Card> deck) {
-        this.cards = deck;
+    
+    
+    @Override
+    public String toString() {
+        return "Cards on deck: " + getNumCard()+"\n";//+cards;
     }
 }

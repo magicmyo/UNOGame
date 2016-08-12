@@ -21,7 +21,6 @@ public class TestUno {
     public static void main(String[] args) {
         // TODO code application logic here
         //TestUno test = new TestUno();
-        Deck testDeck = new Deck();   
         Game game1;
         //testDeck = testDeck.DeckCreate();
         
@@ -40,13 +39,14 @@ public class TestUno {
         playerList.add(p5);
         
         String gameId  = "g001";
-        String status = "Waiting";
+        String status = "waiting";
         
-        game1 = new Game(gameId, playerList, status, testDeck);
-        
+        game1 = new Game(gameId,"aa", status);
+        game1.setPlayerList(playerList);
         game1.startPlay();
-        
+        Deck d = new Deck();
         System.out.println(game1);
+        //System.out.println(d);
     }  
     
 }

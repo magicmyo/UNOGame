@@ -6,7 +6,6 @@
 package iss.nus.edu.myo.uno;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  *
@@ -15,18 +14,20 @@ import java.util.Collections;
 public class Game {
     
     private String id;
-    private ArrayList<Player> playList;
+    private String gname;
+    private ArrayList<Player> playerList;
     private String status;
     private Deck deck;
     private Card discardCard;
 
-    public Game(String id, ArrayList<Player> playList, String status, Deck deck) {
+    public Game(String id,String gname, String status) {
         this.id = id;
-        this.playList = playList;
-        this.status = status;
-        this.deck = deck;
-        //this.discardPile = discardPile;
+        this.gname = gname;
+        this.status = status;    
+        deck = new Deck();
+        playerList = new ArrayList<Player>();
     }
+
 
     /**
      * @return the id
@@ -46,19 +47,24 @@ public class Game {
      * @return the playList
      */
     public ArrayList<Player> getPlayList() {
-        return playList;
+        return playerList;
     }
 
     /**
      * @param playList the playList to set
      */
-    public void setPlayList(ArrayList<Player> playList) {
-        this.playList = playList;
+    public void setPlayerList(ArrayList<Player> playList) {
+        this.playerList = playList;
     }
 
-    public void setPlayer(Player player) {
-        this.playList.add(player);
+    public void addPlayer(Player player) {
+        this.playerList.add(player);
     }
+    
+     public void removePlayer(Player player) {
+        this.playerList.add(player);
+    }
+     
     
     /** 
      * @return the status
@@ -102,18 +108,22 @@ public class Game {
         this.discardCard = discardPile;
     }
      
-    public Deck ShuffleDeck(Deck d){
-        Collections.shuffle(d.getDeck());
-        return d;
-    }
+    
 
     public void startPlay(){
-        deck = this.ShuffleDeck(deck.DeckCreate());
-        
+
+       deck.ShuffleDeck();
+       
+       //clear
+       for (Player player : playerList) {
+                player.setCardInHand(new ArrayList<Card>());
+                
+       } 
+       
        int counter =1;
         while(counter <= 7){
             
-            for (Player player : playList) {
+            for (Player player : playerList) {
                 Card handCard = deck.getCardFromDeck();
                 player.setCardToHand(handCard);
                 
@@ -124,10 +134,34 @@ public class Game {
         discardCard = deck.getCardFromDeck();
     }
     
-    @Override
-    public String toString() {
-        return "Game id=" + id + "\nDiscard Card=" + discardCard+ "\nStatus=" + status  +"\n"+ deck + "\n\t"+ playList;
+    public int claculateHandsValues() {
+     
+        int totalValue = 0;
+        
+         for(Player player : playerList) {
+             totalValue += player.claculateHandValue();
+         }
+
+        return totalValue;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Game id=" + id + "\nDiscard Card=" + discardCard+ "\nStatus=" + status  +"\n"+ deck + "\n\t"+ playerList+"\ntotal="+claculateHandsValues();
+    }
+
+    /**
+     * @return the gname
+     */
+    public String getGname() {
+        return gname;
+    }
+
+    /**
+     * @param gname the gname to set
+     */
+    public void setGname(String gname) {
+        this.gname = gname;
+    }
+
 }

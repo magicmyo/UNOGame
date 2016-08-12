@@ -11,6 +11,7 @@ package iss.nus.edu.myo.uno;
  */
 public class Card {
     
+    private String cid;
     private String color;
     private String type;
     private int value;
@@ -20,11 +21,20 @@ public class Card {
 
     }
     
-    public Card(String color, String type, int value, String image) {
+    public Card(String cid,String color, String type, int value, String image) {
+        this.cid = cid;
         this.color = color;
         this.type = type;
         this.value = value;
         this.image = image;
+    }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     
@@ -86,7 +96,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card:" + "color=" + color + ", type=" + type + ", value=" + value + ", image=" + image + "\n\t\t\t";
+        return "Card: id"+cid + "color=" + color + ", type=" + type + ", value=" + value + ", image=" + image + "\n\t\t\t";
     }
     
     

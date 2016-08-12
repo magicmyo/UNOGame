@@ -15,7 +15,7 @@ public class Player {
     
     private String id;
     private String name;
-    private ArrayList<Card> hand = new ArrayList<Card>();
+    private ArrayList<Card> cardInHand = new ArrayList<Card>();
     
     public Player(){
         
@@ -26,10 +26,6 @@ public class Player {
         this.name = name;
     }
 
-    
-    /**
-     * @return the id
-     */
     public String getId() {
         return id;
     }
@@ -59,20 +55,38 @@ public class Player {
      * @return the hand
      */
     public Card getCardFromHand(int i) {
-        return hand.remove(i);
+        return this.cardInHand.remove(i);
     }
 
-    /**
-     * @param hand the hand to set
-     */
     public void setCardToHand(Card card) {
-        this.hand.add(card);
+        this.cardInHand.add(card);
     }
 
     @Override
     public String toString() {
-        return "Player:" + "id=" + id + ", name=" + name + "\n\t\tCards in hand:\n\t\t\t" + hand+"\n\t";
+        return "Player:" + "id=" + id + ", name=" + name + "\n\t\tCards in hand:\n\t\t\t" + getCardInHand()+"\n\t\tTotal Value="+claculateHandValue()+"\n\t";
+    }
+
+    /**
+     * @return the hand
+     */
+    public ArrayList<Card> getCardInHand() {
+        return cardInHand;
+    }
+
+    public void setCardInHand(ArrayList<Card> hand) {
+        this.cardInHand = hand;
     }
     
+    public int claculateHandValue() {
+     
+        int totalValue = 0;
+        
+         for(Card card : cardInHand) {
+             totalValue += card.getValue();
+         }
+
+        return totalValue;
+    }
     
 }
