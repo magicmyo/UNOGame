@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+        <script src="libs/chui/chui-3.9.2.js" type="text/javascript"></script>
+        <script src="libs/table.js" type="text/javascript"></script>
+        <script src="libs/removeDeckCard.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" href="libs/chui/chui-ios-3.9.2.css" type="text/css" />
+
+        <style>
+            #deckcard{
+                float: left;
+                width: 170px;
+            }
+
+            #discardcard{
+                float: left;
+                width: 170px;
+            }
+
+            .peppable2{ 
+                position: absolute; 
+                top: 350px; 
+                left: 100px; 
+            }
+
+            .peppable3{ 
+                position: absolute; 
+                top: 350px; 
+                left: 400px; 
+            }
+
+            .pname{
+                display: block;
+            }
+
+            .user{
+                width: 200px;
+                height: auto;
+            }
+
+            .top {
+                z-index: 100 !important; 
+                position: relative;
+            }
+
+            .bottom {
+                z-index: 10 !important; 
+                position: relative;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <!-- Create Game-->
+        <nav>
+            <h1>Create New Games</h1>
+        </nav>
+        <article id="main">
+            <section>
+                <ul class="list" id="game">
+                    <li>
+                        <label>Game Title : </label>
+                        <input autocomplete="off" type="text" id="name" placeholder="Type Game Title" required>
+                    </li>
+                </ul>
+                <div class="horizontal centered">
+                    <button class="create" id="create">Create Game</button>
+                </div>
+            </section>
+        </article>
+
+        <!-- Table wait player -->
+        <nav>
+            <h1>Table Wait Player</h1>
+        </nav>
+        <article id="tablewaitplayer">
+            <section>
+                <ul class="list">
+                    <li>
+                        <label id="gid">Game Id:</label>
+                        <br>
+                        <label id="gname">Game Name:</label>
+                    </li>
+
+                </ul>
+                <div id="chatarea">
+                </div>
+                <div class="horizontal centered">
+                    <button class="create" id="start">Start Game</button>
+                </div>
+
+
+            </section>
+        </article>
+
+        <!-- Table game start -->
+        <nav>
+            <h1>Table Game Start</h1>
+        </nav>
+        <article id="tablestartgame">
+            <section>
+                <label id="gname"></label>
+
+                <div id="playerlist">
+                    <li id="droppable" class="ui-widget-header">
+                        
+                    </li>
+                </div>
+
+                <div id="discardcard">
+                </div>
+
+                <div id="deckcard">
+                </div>
+
+                <div class="horizontal centered">
+                    <button class="create" id="join">Deal</button>
+                </div>
+
+            </section>
+        </article>
+
+
+    </body>
+</html>
+
+<!--<script>
+    $(function () {
+        $('#deckcard').on("singletap", "img", function () {
+            $(this).addClass('top').removeClass('bottom');
+            $(this).siblings().removeClass('top').addClass('bottom');
+        });
+
+        $("#droppable").droppable({
+            accept: ".peppable3",
+            classes: {
+                "ui-droppable-active": "ui-state-active",
+                "ui-droppable-hover": "ui-state-hover"
+            },
+            drop: function (event, ui) {
+                ui.helper.remove();
+                deleteMe = true;
+
+                alert("Dropped");
+
+                ui.draggable.remove();
+            }
+        });
+    });
+</script>-->

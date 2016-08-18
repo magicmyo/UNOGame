@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <script src="libs/jquery-3.1.0.js" type="text/javascript"></script>
+        <script src="libs/chui/chui-3.9.2.js" type="text/javascript"></script>
+        <script src="libs/player.js" type="text/javascript"></script>
+        <script src="libs/removeHandCard.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" href="libs/chui/chui-ios-3.9.2.css" type="text/css" />
+        
+        <script>
+            $(function () {
+
+                $('#dealcard').on("singletap", "img", function () {
+                    $(this).remove();
+                });
+            });
+        </script>
+        
+        <style>
+            .absolute0 {
+                left: 100px;
+                z-index: 1;
+            }
+
+            .absolute1 {
+                left: 150px;
+                z-index: 2;
+            }
+
+            .absolute2 {
+                left: 200px;
+                z-index: 3;
+            }
+
+            .absolute3 {
+                left: 250px;
+                z-index: 4;
+            }
+
+            .absolute4 {
+                left: 300px;
+                z-index: 5;
+            }
+
+            .absolute5 {
+                left: 350px;
+                z-index: 6;
+            }
+
+            .absolute6 {
+                left: 400px;
+                z-index: 7;
+            }
+
+            #dealcard {
+                width: 300px;
+                height: 400px;
+                float: left;
+                right: 0;
+                top: 200px;
+                overflow: hidden;
+            }
+
+            #dealcard img{
+                position: absolute;			
+                width: 170px;
+                height: 258px;
+                z-index: 0;
+                top: 200px;
+            }
+
+            .top {
+                z-index: 100 !important; 
+                position: relative;
+            }
+
+            .bottom {
+                z-index: 10 !important; 
+                position: relative;
+            }
+        </style>
+
+
+    </head>
+    <body>
+
+        <!-- Game Lists -->
+        <nav>
+            <h1>Available Games</h1>
+        </nav>
+        <article id="main">
+            <section>
+                <ul class="list" id="game">
+
+                </ul>
+
+            </section>
+        </article>
+
+        <!-- Player Join -->
+        <nav>
+            <h1>Player Join Game</h1>
+        </nav>
+        <article id="playerJoin">
+            <section>
+                <label id="gname"></label>
+                <ul class="list">
+                    <li>
+                        <label>Player Name:</label>
+                        <input autocomplete="off" type="text" id="pname" placeholder="Type Name" required>
+                    </li>
+
+                </ul>
+                <div class="horizontal centered">
+                    <button class="create" id="join">Join Player</button>
+                </div>
+
+
+            </section>
+        </article>
+
+        <!-- Player wait player -->
+        <nav>
+            <h1>Player Wait Player</h1>
+        </nav>
+        <article id="playerwaitplayer">
+            <section>
+                <label id="gname"></label>
+                <ul class="list">
+                    <li>
+                        <label id="status">Wait for Friends.</label>
+                    </li>
+
+                </ul>  
+                <div id="chatarea">
+                </div>
+                <div class="horizontal centered">
+                    <button class="btnStart" id="start">Start</button>
+                </div>
+
+            </section>
+        </article>
+
+        <!-- Player game start -->
+        <nav>
+            <h1>Player Game Start</h1>
+        </nav>
+        <article id="playergamestart">
+            <section>
+                <label id="gname"></label>
+                <div id="demo"></div>
+                <!--                <ul class="list" id="dealcard">
+                                    <li>
+                                        <label id="status"></label>
+                                    </li>
+                                    
+                                </ul>            -->
+                <div id="dealcard">
+
+                </div>
+                <div class="horizontal centered">
+                    <button class="start" id="nothing">Oh My Ghost</button>
+                </div>
+
+            </section>
+        </article>
+
+    </body>
+</html>

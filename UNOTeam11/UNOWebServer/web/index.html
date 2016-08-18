@@ -1,0 +1,29 @@
+<html>
+<body>
+	<h1>Create Game</h1>
+
+	<form action="api/game/addgame" method="post">
+		<p>
+                    Game Name : <input type="text" name="gname" />
+		</p>
+		<input type="submit" value="Create New Game" />
+	</form>
+        
+        <form action="api/game/addplayer" method="post">
+		<p>
+                    Game id :  <input type="text" name="gid" />
+                    Player Name : <input type="text" name="pname" />
+		</p>
+		<input type="submit" value="Add Player" />
+	</form>
+        
+        <form action="api/game/startgame" method="post">
+		<p>
+                    Game id :  <input type="text" name="gid" />
+                    Player id : <input type="text" name="pid" />
+		</p>
+		<input type="submit" value="Start Play" />
+	</form>
+
+</body>
+</html>
